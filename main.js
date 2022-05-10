@@ -60,7 +60,7 @@ class AppComponent {
             accessToken: _environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.mapboxKey,
             style: 'mapbox://styles/fortyxd/cl2xqv469000615t7cf48cyb4',
             center: [37.4128099, 55.7395971],
-            zoom: 17,
+            zoom: 15,
             pitch: 45,
             antialias: true,
             container: 'map-mapbox', // container ID
@@ -73,36 +73,6 @@ class AppComponent {
         map.on('load', () => {
             rotateCamera(0);
             const layers = map.getStyle().layers;
-            map.addLayer({
-                'id': '3d-buildings',
-                'source': 'composite',
-                'source-layer': 'building',
-                'filter': ['==', 'extrude', 'true'],
-                'type': 'fill-extrusion',
-                'minzoom': 15,
-                'paint': {
-                    'fill-extrusion-color': '#aaa',
-                    'fill-extrusion-height': [
-                        'interpolate',
-                        ['linear'],
-                        ['zoom'],
-                        15,
-                        0,
-                        15.05,
-                        ['get', 'height']
-                    ],
-                    'fill-extrusion-base': [
-                        'interpolate',
-                        ['linear'],
-                        ['zoom'],
-                        15,
-                        0,
-                        15.05,
-                        ['get', 'min_height']
-                    ],
-                    'fill-extrusion-opacity': 0.6
-                }
-            });
         });
     }
 }
